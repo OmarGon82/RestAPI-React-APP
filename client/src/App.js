@@ -31,6 +31,7 @@ class App extends Component {
             {items.map(item => (
               <div key={item.id}>
                 Course: {item.title}
+                id:  {item.id}
               </div>
             ))}
   
