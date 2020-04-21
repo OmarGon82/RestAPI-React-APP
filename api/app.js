@@ -4,7 +4,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const routes = require('./routes');
-
+ const cors = require('cors')
 
 //Setting up and testing Sequelize
 const sequelize = require('./models').sequelize;
@@ -16,7 +16,7 @@ console.log('Testing the connection to the database...');
     
     console.log('Connection to the database successful!');
     await sequelize.authenticate();
-    // Syncing the datebase.
+    // Syncing the database.
     console.log('Database successfully synced!');
     await sequelize.sync();
 
@@ -33,6 +33,10 @@ const enableGlobalErrorLogging = process.env.ENABLE_GLOBAL_ERROR_LOGGING === 'tr
 
 // create the Express app
 const app = express();
+
+// Enable All CORS Requests
+app.use(cors());
+
 
 // Setup request body JSON parsing.
 app.use(express.json());

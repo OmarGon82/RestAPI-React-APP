@@ -161,7 +161,7 @@ router.delete("/users/:id", handleAsync( async(req, res, next) => {
 
 
 /**
- *  Course GET: Gets a list of all the coureses and users who owns each course.
+ *  Course GET: Gets a list of all the courses and users who owns each course.
  */
 router.get('/courses', handleAsync(async (req, res) => {
 const courses = await Course.findAll({

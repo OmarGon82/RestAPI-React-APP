@@ -2,16 +2,24 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Switch
+  // Switch
 } from 'react-router-dom';
+import withContext from './Context'
+
+
 // Component Imports
 import Header from './Components/Header';
+import Courses from './Components/Courses';
+
+const CoursesWithContext = withContext(Courses)
+
 
 export default () => (
 
     <Router>
       <div>
         <Header />
+        <Route path="/" component={CoursesWithContext}/>
       </div>
     </Router>
 
