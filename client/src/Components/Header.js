@@ -5,20 +5,21 @@ export default class Header extends React.PureComponent {
     render() {
         return (
             <div className="header">
-            <div className="bounds">
-              <h1 className="header--logo">Courses</h1>
-              <nav>
+              <div className="bounds">
+                <h1 className="header--logo">Courses</h1>
+                <nav>
                   <React.Fragment>
-                    <span>Welcome, user!</span> 
-                    <Link to="/signout">Sign Out</Link>
+                    <span>Welcome, user!</span>
+                    {/* this will be a ternary expression later 
+                    <Link to="/signout">Sign Out</Link> */}
                   </React.Fragment>
                   <React.Fragment>
                     <Link className="signup" to="/signup">Sign Up</Link>
                     <Link className="signin" to="/signin">Sign In</Link>
                   </React.Fragment>
-              </nav>
+                </nav>
+              </div>
             </div>
-          </div>
         );
     }
 }

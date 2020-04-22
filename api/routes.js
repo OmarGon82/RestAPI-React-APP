@@ -99,15 +99,15 @@ const auth = require('basic-auth');
    [
     check('firstName')
         .exists({ checkFalsy: true, checkNull: true})
-        .withMessage('Please provide a value for "firstName"'),
+        .withMessage('Please provide a value for "First Name"'),
     check('lastName')
         .exists({ checkFalsy: true, checkNull: true})
-        .withMessage('Please provide a value for "lastName"'),
+        .withMessage('Please provide a value for "Last Name"'),
     check('emailAddress')
         .isEmail()
         .withMessage('Please enter a valid email address')
         .exists({ checkFalsy: true, checkNull: true})
-        .withMessage('Please provide a value for "emailAddress"'),
+        .withMessage('Please provide a value for "Email Address"'),
     check('password')
         .exists({ checkFalsy: true, checkNull: true})
         .withMessage('Please provide a value for "password"'),

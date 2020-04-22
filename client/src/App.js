@@ -2,7 +2,7 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  // Switch
+  Switch
 } from 'react-router-dom';
 import withContext from './Context'
 
@@ -10,16 +10,29 @@ import withContext from './Context'
 // Component Imports
 import Header from './Components/Header';
 import Courses from './Components/Courses';
+import NotFound from './Components/NotFound';
+import CourseDetail from './Components/CourseDetail';
+import UserSignUp from './Components/UserSignUp';
+// import UserSignIn from './Components/UserSignIn';
 
-const CoursesWithContext = withContext(Courses)
-
+//connect components to context
+const CoursesWithContext = withContext(Courses);
+const CourseDetailWithContext = withContext(CourseDetail);
+const UserSignUpWithContext = withContext(UserSignUp);
+// const UserSignInWithContext = withContext(UserSignIn);
 
 export default () => (
 
     <Router>
       <div>
         <Header />
-        <Route path="/" component={CoursesWithContext}/>
+
+        <Switch>
+          <Route exact path="/" component={CoursesWithContext}/>
+          <Route path="/courses/:id" component={CourseDetailWithContext} />
+          <Route path="/signup" component={UserSignUpWithContext} />
+          <Route component={NotFound} />
+        </Switch>
       </div>
     </Router>
 
