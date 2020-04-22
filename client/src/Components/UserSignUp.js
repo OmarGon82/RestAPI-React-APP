@@ -1,7 +1,3 @@
-// UserSignUp - This component provides the "Sign Up" screen by rendering a form that allows a user to sign up by creating a new account. 
-// The component also renders a "Sign Up" button that when clicked sends a POST request to 
-// the REST API's /api/users route and signs in the user. 
-// This component also renders a "Cancel" button that returns the user to the default route (i.e. the list of courses).
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Form from './Form';
@@ -36,12 +32,12 @@ export default class UserSignUp extends Component {
                     elements={()=> (
                         <React.Fragment>
                             <input 
-                                id="firstName"
-                                name="firstName"
-                                type="text"
-                                value={firstName}
-                                onChange={this.change}
-                                placeholder="First Name" />
+                              id="firstName"
+                              name="firstName"
+                              type="text"
+                              value={firstName}
+                              onChange={this.change}
+                              placeholder="First Name" />
                             <input 
                               id="lastName"
                               name="lastName"
@@ -50,12 +46,12 @@ export default class UserSignUp extends Component {
                               onChange={this.change}
                               placeholder="last Name" />
                             <input 
-                              id="email" 
-                              name="email" 
+                              id="emailAddress" 
+                              name="emailAddress" 
                               type="email"
                               value={emailAddress} 
                               onChange={this.change} 
-                              placeholder="youremail@email.com" />
+                              placeholder="email@email.com" />
                             <input 
                                 id="password"
                                 name="password"
@@ -77,10 +73,9 @@ export default class UserSignUp extends Component {
     change = (e) => {
         const name = e.target.name;
         const value = e.target.value;
-    
         this.setState(() => {
             return {
-                [name]: value
+                [name]: value,
             };
         });
     }

@@ -13,13 +13,15 @@ import Courses from './Components/Courses';
 import NotFound from './Components/NotFound';
 import CourseDetail from './Components/CourseDetail';
 import UserSignUp from './Components/UserSignUp';
-// import UserSignIn from './Components/UserSignIn';
+import UserSignIn from './Components/UserSignIn';
+import Authenticated from './Components/Authenticated';
 
 //connect components to context
+const AuthWithContext = withContext(Authenticated);
 const CoursesWithContext = withContext(Courses);
 const CourseDetailWithContext = withContext(CourseDetail);
 const UserSignUpWithContext = withContext(UserSignUp);
-// const UserSignInWithContext = withContext(UserSignIn);
+const UserSignInWithContext = withContext(UserSignIn);
 
 export default () => (
 
@@ -29,7 +31,9 @@ export default () => (
 
         <Switch>
           <Route exact path="/" component={CoursesWithContext}/>
+          <Route path="/authenticated" component={AuthWithContext} />
           <Route path="/courses/:id" component={CourseDetailWithContext} />
+          <Route path="/signin"  component={UserSignInWithContext} />
           <Route path="/signup" component={UserSignUpWithContext} />
           <Route component={NotFound} />
         </Switch>
