@@ -7,9 +7,9 @@ const Context = React.createContext();
 
 export class Provider extends Component {
     
-    // state = {
-    //     authenticatedUser: Cookies.getJSON('authenticatedUser') || null
-    // }
+    state = {
+        authenticatedUser: null
+    }
 
     constructor() {
         super();
@@ -17,50 +17,43 @@ export class Provider extends Component {
     }
 
     render() {
-        // const { authenticatedUser } = this.state
-        
+        const { authenticatedUser } = this.state
     // object containing the context to be shared throughout the App
     const value = {
-        // authenticatedUser,
+        authenticatedUser,
         data: this.data,
-        actions: {
+        actions: { // Add actions property to the object
             signIn: this.signIn,
             signOut: this.signOut,
         },
     }
+
     return (
         <Context.Provider value={value} >
             {this.props.children}
         </Context.Provider>
-    )
-    }
+        );
+    } 
+
+
     signIn = async (emailAddress, password) => {
         const user = await this.data.getUser(emailAddress, password);
+        if(user !== null) {
+            this.setState(() => {
+                return {
+                    authenticatedUser: user
+                };
+            });
+            // Set a cookie
+            // Cookies.set('authenticatedUser', JSON.stringify(user), { expires: 1 });
+        }
         return user;
-      }
-    // signIn = async (emailAddress, password) => {
-    //     const user = await this.data.getUser(emailAddress, password);
-    //     if(user !== null) {
-    //         this.setState(() => {
-    //             return {
-    //                 authenticatedUser: user
-    //             };
-    //         });
-    //         // Set a cookie
-    //         Cookies.set('authenticatedUser', JSON.stringify(user), { expires: 1 });
-    //     }
-    //     return user;
-    // }
-
-    // signOut = () => {
-    //     this.setState( () => {
-    //         return {
-    //             authenticatedUser: null
-    //         };
-    //     });
-    //     Cookies.remove('authenticatedUser');
-    // }
-
+    }
+    
+    signOut = () => {
+    this.setState({ authenticatedUser: null });
+        // Cookies.remove('authenticatedUser');
+    }
 }
 
 export const Consumer = Context.Consumer;

@@ -6,7 +6,6 @@ import {
 } from 'react-router-dom';
 import withContext from './Context'
 
-
 // Component Imports
 import Header from './Components/Header';
 import Courses from './Components/Courses';
@@ -14,32 +13,35 @@ import NotFound from './Components/NotFound';
 import CourseDetail from './Components/CourseDetail';
 import UserSignUp from './Components/UserSignUp';
 import UserSignIn from './Components/UserSignIn';
+import UserSignOut from './Components/UserSignOut';
 import Authenticated from './Components/Authenticated';
+import PrivateRoute from './PrivateRoute';
 
 //connect components to context
+const HeaderWithContext = withContext(Header)
 const AuthWithContext = withContext(Authenticated);
 const CoursesWithContext = withContext(Courses);
 const CourseDetailWithContext = withContext(CourseDetail);
 const UserSignUpWithContext = withContext(UserSignUp);
 const UserSignInWithContext = withContext(UserSignIn);
+const UserSignOutWithContext = withContext(UserSignOut);
 
 export default () => (
-
     <Router>
       <div>
-        <Header />
+        <HeaderWithContext />
 
         <Switch>
           <Route exact path="/" component={CoursesWithContext}/>
-          <Route path="/authenticated" component={AuthWithContext} />
-          <Route path="/courses/:id" component={CourseDetailWithContext} />
+          <PrivateRoute path="/authenticated" component={AuthWithContext} />
+          <PrivateRoute path="/courses/:id" component={CourseDetailWithContext} />
           <Route path="/signin"  component={UserSignInWithContext} />
           <Route path="/signup" component={UserSignUpWithContext} />
+          <Route path="/signout" component={UserSignOutWithContext} />
           <Route component={NotFound} />
         </Switch>
       </div>
     </Router>
-
   // constructor(props) {
   //   super(props);
   //   this.state = {
