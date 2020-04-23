@@ -41,7 +41,7 @@ export default class UserSignIn extends Component {
                         placeholder="email@email.com"
                       />
                       <input 
-                         id="password"
+                        id="password"
                         name="password"
                         type="password"
                         value={password}
@@ -61,7 +61,7 @@ export default class UserSignIn extends Component {
     change = (e) => {
       const name = e.target.name;
       const value = e.target.value;
-      console.log(name)
+
       this.setState(()=> {
         return {
           [name]: value

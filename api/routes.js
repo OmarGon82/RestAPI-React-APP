@@ -59,7 +59,7 @@ const auth = require('basic-auth');
                     req.currentUser = user;
 
                 } else {
-                    message = `Authentication failure for username: ${user.emailAddress}`;
+                    message = `Authentication failure for email: ${user.emailAddress}`;
                 }
             } else {
                 message = `User not found for username: ${credentials.name}`;

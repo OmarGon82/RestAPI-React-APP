@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import Data from './Data';
-import Cookies from 'js-cookie';
+// import Cookies from 'js-cookie';
+
+// Create context
 const Context = React.createContext();
 
 export class Provider extends Component {
     
-    state = {
-        authenticatedUser: Cookies.getJSON('authenticateUser') || null
-    }
+    // state = {
+    //     authenticatedUser: Cookies.getJSON('authenticatedUser') || null
+    // }
 
     constructor() {
         super();
@@ -15,11 +17,11 @@ export class Provider extends Component {
     }
 
     render() {
-        const { authenticatedUser } = this.state
-    
+        // const { authenticatedUser } = this.state
+        
     // object containing the context to be shared throughout the App
     const value = {
-        authenticatedUser,
+        // authenticatedUser,
         data: this.data,
         actions: {
             signIn: this.signIn,
@@ -32,29 +34,32 @@ export class Provider extends Component {
         </Context.Provider>
     )
     }
-
     signIn = async (emailAddress, password) => {
         const user = await this.data.getUser(emailAddress, password);
-        if(user !== null) {
-            this.setState(() => {
-                return {
-                    authenticatedUser: user
-                };
-            });
-            // Set a cookie
-            Cookies.set('authenticatedUser', JSON.stringify(user), { expires: 1 });
-        }
         return user;
-    }
+      }
+    // signIn = async (emailAddress, password) => {
+    //     const user = await this.data.getUser(emailAddress, password);
+    //     if(user !== null) {
+    //         this.setState(() => {
+    //             return {
+    //                 authenticatedUser: user
+    //             };
+    //         });
+    //         // Set a cookie
+    //         Cookies.set('authenticatedUser', JSON.stringify(user), { expires: 1 });
+    //     }
+    //     return user;
+    // }
 
-    signOut = () => {
-        this.setState( () => {
-            return {
-                authenticatedUser: null
-            };
-        });
-        Cookies.remove('authenticatedUser');
-    }
+    // signOut = () => {
+    //     this.setState( () => {
+    //         return {
+    //             authenticatedUser: null
+    //         };
+    //     });
+    //     Cookies.remove('authenticatedUser');
+    // }
 
 }
 
