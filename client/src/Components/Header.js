@@ -1,9 +1,8 @@
 import React from 'react'; 
 import { Link } from 'react-router-dom';
 
-export default class Header extends React.PureComponent {
-    render() {
-      const { context } = this.props;
+export default ({ context }) => {
+
       const authUser = context.authenticatedUser;
         return (
             <div className="header">
@@ -25,5 +24,5 @@ export default class Header extends React.PureComponent {
               </div>
             </div>
         );
-    }
+    
 }
