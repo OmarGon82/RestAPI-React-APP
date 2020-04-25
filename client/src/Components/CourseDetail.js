@@ -1,16 +1,11 @@
-// CourseDetail - This component provides the "Course Detail" screen by retrieving the detail 
-// for a course from the REST API's /api/courses/:id route and rendering the course. 
-// The component also renders a "Delete Course" button that when clicked should send a DELETE request to 
-// the REST API's /api/courses/:id route in order to delete a course. 
-// This component also renders an "Update Course" button for navigating to the "Update Course" screen.
 import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
-
+const ReactMarkdown = require('react-markdown');
 export default class CourseDetail extends Component {
     constructor() {
         super();
         this.state = {
-            course: {},
+            course: {}
         }
     }
 
@@ -26,12 +21,40 @@ export default class CourseDetail extends Component {
         }
     }
 
-    render() {
-        const { course } = this.state;
-        return (
-               
-            <div>{course.title} {course.id}</div>
-
-            )
-    }
+  render() {
+    const { course } = this.state;
+    const firstName = ((course|| {}).user || {}).firstName;
+    const lastName = ((course|| {}).user || {}).lastName;
+   
+    return (
+      <div>
+        <div className="bounds course--detail">
+          <div className="grid-66">
+            <div className="course--header">
+              <h4 className="course--label">Course</h4>
+              <h3 className="course--title">{course.title}</h3>
+              <p>By {firstName} {lastName} </p>
+            </div>
+            <div className="course--description">
+              <ReactMarkdown source={course.description} />
+            </div>
+          </div>
+          <div className="grid-25 grid-right">
+            <div className="course--stats">
+              <ul className="course--stats--list">
+                <li className="course--stats--list--item">
+                  <h4>Estimated Time</h4>
+                  <h3>{course.estimatedTime}</h3>
+                </li>
+                <li className="course--stats--list--item">
+                  <h4>Materials Needed</h4>
+                  <ReactMarkdown source={course.materialsNeeded} />
+                </li>
+              </ul>
+            </div>
+          </div>  
+        </div>
+      </div>    
+    )
+  }
 }
