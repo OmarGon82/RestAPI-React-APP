@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Data from './Data';
-// import Cookies from 'js-cookie';
+import Cookies from 'js-cookie';
 
 // Create context
 const Context = React.createContext();
@@ -8,16 +8,16 @@ const Context = React.createContext();
 export class Provider extends Component {
     
     state = {
-        authenticatedUser: null
+        authenticatedUser: Cookies.getJSON('authenticatedUser')  || null,
     }
 
     constructor() {
         super();
         this.data = new Data();
     }
-
     render() {
         const { authenticatedUser } = this.state
+
     // object containing the context to be shared throughout the App
     const value = {
         authenticatedUser,
@@ -37,7 +37,8 @@ export class Provider extends Component {
 
 
     signIn = async (emailAddress, password) => {
-        const user = await this.data.getUser(emailAddress, password);
+       const user = await this.data.getUser(emailAddress, password);
+       
         if(user !== null) {
             this.setState(() => {
                 return {
@@ -45,15 +46,25 @@ export class Provider extends Component {
                 };
             });
             // Set a cookie
-            // Cookies.set('authenticatedUser', JSON.stringify(user), { expires: 1 });
+            Cookies.set('authenticatedUser', JSON.stringify(user), { expires: 1 });
         }
         return user;
     }
     
+    
+    
     signOut = () => {
-    this.setState({ authenticatedUser: null });
-        // Cookies.remove('authenticatedUser');
+        this.setState(() => {
+            return {
+                authenticatedUser:null
+            };
+        });
+        Cookies.remove('authenticatedUser')
     }
+
+    
+ 
+    
 }
 
 export const Consumer = Context.Consumer;

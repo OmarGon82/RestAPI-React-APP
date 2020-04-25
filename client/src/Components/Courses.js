@@ -27,7 +27,7 @@ export default class Courses extends Component {
             return <div>Loading...</div>;
         } else {
             return (
-                <div>
+                <div className="bounds">
                     {courses.map(course => (
                     <React.Fragment key={course.id}>
                         <div className="bounds"  >

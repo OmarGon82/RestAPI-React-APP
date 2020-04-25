@@ -2,14 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default ({ context }) => {
-
-      const authUser = context.authenticatedUser;
+  
+  const authUser = context.authenticatedUser;
+  console.log("this is authUser", authUser)
         return (
             <div className="header">
               <div className="bounds">
-                <h1 className="header--logo">Courses</h1>
+                <Link to="/"><h1 className="header--logo">Courses</h1></Link>
                 <nav>
-                {authUser ?
+                {authUser?
                   <React.Fragment>
                     <span>Welcome, {authUser.firstName}!</span>
                     <Link to="/signout">Sign Out</Link>
