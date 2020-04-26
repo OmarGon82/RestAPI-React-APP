@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 const ReactMarkdown = require('react-markdown');
 export default class CourseDetail extends Component {
     constructor() {
@@ -28,6 +28,15 @@ export default class CourseDetail extends Component {
    
     return (
       <div>
+        <div className="actions--bar">
+          <div className="bounds">
+            <div className="grid-100">
+              <Link className="button" to="/update-course">Update Course</Link>
+              <Link className="button" to="/delete-course">Delete Course</Link>
+              <Link className="button button-secondary" to="/">Return to list</Link>
+            </div>
+          </div>
+        </div>
         <div className="bounds course--detail">
           <div className="grid-66">
             <div className="course--header">
