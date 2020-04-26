@@ -1,6 +1,3 @@
-// CreateCourse - This component provides the "Create Course" screen by rendering a form that allows a user to create a new course. 
-// The component also renders a "Create Course" button that when clicked sends a POST request to the REST API's /api/courses route. 
-// This component also renders a "Cancel" button that returns the user to the default route (i.e. the list of courses).
 import React, { Component } from 'react';
 import Form from './Form';
 
@@ -11,6 +8,7 @@ export default class CreateCourse extends Component {
       description: '',
       estimatedTime: '',
       materialsNeeded: '',
+      userId: null,
       errors: [],
     }
     
@@ -112,13 +110,15 @@ export default class CreateCourse extends Component {
   }
   submit = () => {
     const { context } = this.props;
-    const authUser = context.authenticatedUser
+    const authUser = context.authenticatedUser;
+    // console.log("auth user in create course", authUser)
     const {
     title,
     description,
     estimatedTime,
     materialsNeeded,
     } = this.state;
+
     const course = {
     title,
     description,
@@ -130,19 +130,21 @@ export default class CreateCourse extends Component {
     //this is wrong for sure
     const password = authUser.password
     console.log(emailAddress)
-      context.data.createCourse(course, emailAddress, password)
-        .then(errors => {
-          if(errors.length) {
-            this.setState({ errors });
-          } else {
-            console.log(`The course: ${title} was successfully created`)
-            this.props.history.push('/')
-          }
-        })
-      .catch( err => {
-        console.log(err)
-        this.props.history.push('/error')
+    console.log(authUser)
+    context.data.createCourse(course, emailAddress, password)
+      .then(errors => {
+        console.log(errors)
+        if(errors.length) {
+          this.setState({ errors });
+        } else {
+          console.log(`The course: ${title} was successfully created`)
+          this.props.history.push('/')
+        }
       })
+    .catch( err => {
+      console.log(err)
+      this.props.history.push('/error')
+    })
   }
 
   cancel = () => {
