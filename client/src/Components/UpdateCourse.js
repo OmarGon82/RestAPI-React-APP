@@ -37,7 +37,7 @@ async componentDidMount() {
                description: course.description,
                estimatedTime: course.estimatedTime,
                materialsNeeded: course.materialsNeeded,
-               userId: course.userId
+               userId: course.user.id
             });
           } else {
             console.log("You can't edit this course because you don't own it")
@@ -89,8 +89,7 @@ async componentDidMount() {
                   <textarea 
                     id="description" 
                     name="description"
-                    type="text" 
-                    className="" 
+                    type="text"
                     placeholder="Course description..."
                     value={description}
                     onChange={this.change} 
@@ -121,7 +120,6 @@ async componentDidMount() {
                     <textarea 
                       id="materialsNeeded" 
                       name="materialsNeeded" 
-                      className="" 
                       placeholder="List materials..."
                       value={materialsNeeded || ''}
                       onChange={this.change} 
@@ -171,7 +169,8 @@ async componentDidMount() {
     };
     const emailAddress = authUser.emailAddress
     const password = authUser.password
-
+    console.log("this is the user id:", userId)
+    console.log("this is the user id:", id)
     context.data.updateCourse(course, emailAddress, password)
       .then(errors => {
         console.log("these are the errors",errors)

@@ -251,7 +251,7 @@ router.put('/courses/:id',[
     .withMessage('Please provide a value for "description"'),
     check('estimatedTime')
     .exists({ checkFalsy: true, checkNull: true})
-    .withMessage('Please provide a value for "estimated Time"')
+    .withMessage('Please provide a value for "Estimated Time"')
  ],authenticateUser, handleAsync(async (req,res) => {
 
         // Attempt get validation result from req obj
@@ -270,13 +270,14 @@ router.put('/courses/:id',[
             course.title = req.body.title;
             course.description = req.body.description;
     
-            await course.save();
+            await course.update(req.body);
             //with status 204 we don't usually send back json but we can use .end() to end the request.
             res.status(204).end();
         } else {
             res.status(404).json({ message: "Course not found" })
         }  
     }
+
 }));
 
 /**
