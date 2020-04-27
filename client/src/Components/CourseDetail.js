@@ -25,13 +25,12 @@ export default class CourseDetail extends Component {
     const { course } = this.state;
     const firstName = ((course|| {}).user || {}).firstName;
     const lastName = ((course|| {}).user || {}).lastName;
-   
     return (
       <div>
         <div className="actions--bar">
           <div className="bounds">
             <div className="grid-100">
-              <Link className="button" to="/update-course">Update Course</Link>
+              <Link className="button" to={`/courses/${course.id}/update`}>Update Course</Link>
               <Link className="button" to="/delete-course">Delete Course</Link>
               <Link className="button button-secondary" to="/">Return to list</Link>
             </div>

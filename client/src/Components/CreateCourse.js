@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import Form from './Form';
 
@@ -127,7 +128,6 @@ export default class CreateCourse extends Component {
     userId: authUser.id
     };
     const emailAddress = authUser.emailAddress
-    //this is wrong for sure
     const password = authUser.password
     console.log(emailAddress)
     console.log(authUser)
