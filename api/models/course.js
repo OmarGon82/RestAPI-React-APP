@@ -34,7 +34,15 @@ module.exports = (sequelize) => {
         },
         estimatedTime: {
             type: Sequelize.STRING,
-            allowNull: true
+            allowNull: false,
+            validate: {
+                notNull: {
+                    msg: 'You must input a value for "estimated Time"',
+                },
+                notEmpty: {
+                    msg: 'You must input a value for "estimated Time"',
+                }
+            }
         },
         materialsNeeded: {
             type: Sequelize.STRING,

@@ -249,7 +249,9 @@ router.put('/courses/:id',[
     check('description')
     .exists({ checkFalsy: true, checkNull: true})
     .withMessage('Please provide a value for "description"'),
-
+    check('estimatedTime')
+    .exists({ checkFalsy: true, checkNull: true})
+    .withMessage('Please provide a value for "estimated Time"')
  ],authenticateUser, handleAsync(async (req,res) => {
 
         // Attempt get validation result from req obj
