@@ -1,9 +1,4 @@
-// UpdateCourse - This component provides the "Update Course" screen by rendering a form that allows
-// a user to update one of their existing courses. 
-// The component also renders an "Update Course" button that when clicked sends a PUT request to 
-// the REST API's /api/courses/:id route. This component also renders a "Cancel" button that returns the user to the "Course Detail" screen
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
 import Form from './Form';
 
 
@@ -40,7 +35,7 @@ async componentDidMount() {
                userId: course.user.id
             });
           } else {
-            console.log("You can't edit this course because you don't own it")
+            alert("You can't edit this course because you don't own it")
             this.props.history.push(`/courses/${course.id}`)
           }
         }
@@ -120,7 +115,7 @@ async componentDidMount() {
                     <textarea 
                       id="materialsNeeded" 
                       name="materialsNeeded" 
-                      placeholder="List materials..."
+                      placeholder="List materials... with an * separated by a space"
                       value={materialsNeeded || ''}
                       onChange={this.change} 
                       />
@@ -169,27 +164,27 @@ async componentDidMount() {
     };
     const emailAddress = authUser.emailAddress
     const password = authUser.password
-    console.log("this is the user id:", userId)
-    console.log("this is the user id:", id)
-    context.data.updateCourse(course, emailAddress, password)
-      .then(errors => {
-        console.log("these are the errors",errors)
-        if(errors.length) {
-          this.setState({ errors });
-        } else {
-          console.log(`The course: ${title} was successfully updated`)
-          this.props.history.push('/')
-        }
-      })
-      .catch( err => {
-      console.log("submit catch error", err)
-      this.props.history.push('/error')
-      })
+    // console.log("this is the user id:", userId)
+    // console.log("this is the user id:", id)
+    
+      context.data.updateCourse(course, emailAddress, password)
+        .then(errors => {
+          console.log("these are the errors",errors)
+          if(errors.length) {
+            this.setState({ errors });
+          } else {
+            console.log(`The course: ${title} was successfully updated`)
+            this.props.history.push(`/courses/${this.props.match.params.id}`)
+          }
+        })
+        .catch( err => {
+        console.log("update course submit catch error", err)
+        this.props.history.push('/error')
+        })
   }
+
+
   cancel = () => {
     this.props.history.push(`/courses/${this.props.match.params.id}`)
   }
-
-
-
 }

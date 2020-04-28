@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import Form from './Form';
 
@@ -129,20 +128,20 @@ export default class CreateCourse extends Component {
     };
     const emailAddress = authUser.emailAddress
     const password = authUser.password
-    console.log(emailAddress)
-    console.log(authUser)
+    // console.log(emailAddress)
+    // console.log(authUser)
     context.data.createCourse(course, emailAddress, password)
       .then(errors => {
         console.log(errors)
         if(errors.length) {
           this.setState({ errors });
         } else {
-          console.log(`The course: ${title} was successfully created`)
+          console.log(`The course: ${title} was successfully created`);
           this.props.history.push('/')
         }
       })
     .catch( err => {
-      console.log(err)
+      console.log("this is the create course catch error:", err)
       this.props.history.push('/error')
     })
   }

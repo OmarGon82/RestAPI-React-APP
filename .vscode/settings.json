@@ -3,6 +3,9 @@
         "api's"
     ],
     "cSpell.words": [
-        "browserslist"
+        "browserslist",
+        "component",
+        "unmount",
+        "will"
     ]
 }

@@ -217,6 +217,9 @@ router.get('/courses/:id', handleAsync(async (req,res) => {
     check('description')
     .exists({ checkFalsy: true, checkNull: true})
     .withMessage('Please provide a value for "description"'),
+    check('estimatedTime')
+    .exists({ checkFalsy: true, checkNull: true})
+    .withMessage('Please provide a value for "Estimated time"')
 
  ],authenticateUser, handleAsync(async (req, res) => {
      // Get the Id of the logged in user

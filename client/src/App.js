@@ -52,11 +52,3 @@ export default () => (
       </div>
     </Router>
 );
-
-// / - Courses
-// /courses/create - CreateCourse
-// /courses/:id/update - UpdateCourse
-// /courses/:id - CourseDetail
-// /signin - UserSignIn
-// /signup - UserSignUp
-// /signout - UserSignOut

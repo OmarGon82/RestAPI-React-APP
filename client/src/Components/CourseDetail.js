@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+
+// set Markdown 
 const ReactMarkdown = require('react-markdown');
+
+
 export default class CourseDetail extends Component {
     constructor() {
         super();
         this.state = {
-            course: {}
+            course: {},
+            errors: [],
         }
     }
 
@@ -23,6 +28,11 @@ export default class CourseDetail extends Component {
 
   render() {
     const { course } = this.state;
+    /**
+     * Get nested object by checks if the course exists. If it does it creates it creates an empty object.
+     * This allows the next level key to be accessed from object that exists or an empty one. 
+     * source: https://hackernoon.com/accessing-nested-objects-in-javascript-f02f1bd6387f
+     */
     const firstName = ((course|| {}).user || {}).firstName;
     const lastName = ((course|| {}).user || {}).lastName;
     return (
@@ -31,7 +41,7 @@ export default class CourseDetail extends Component {
           <div className="bounds">
             <div className="grid-100">
               <Link className="button" to={`/courses/${course.id}/update`}>Update Course</Link>
-              <Link className="button" to="/delete-course">Delete Course</Link>
+              <Link className="button" onClick={this.deleteCourse}  to="/">Delete Course</Link>
               <Link className="button button-secondary" to="/">Return to list</Link>
             </div>
           </div>
@@ -65,4 +75,39 @@ export default class CourseDetail extends Component {
       </div>    
     )
   }
+
+  // Create a function that deletes the current course.
+  
+   deleteCourse = (e) => {
+    e.preventDefault();
+
+     const { context } = this.props;
+     const authUser = context.authenticatedUser;
+     const emailAddress = authUser.emailAddress;
+     const password = authUser.password;
+     const userId = authUser.id
+ 
+     const {
+       course,
+     } = this.state;
+
+        if (course.user.id === userId) {
+          context.data.deleteCourse(course, emailAddress, password)
+            .then( errors => {
+              if(errors.length) {
+                this.state({ errors })
+              } else {
+                this.props.history.push('/')
+              }
+            })
+            .catch( err => {
+              console.log("this is the delete course catch error: ", err)
+              this.props.history.push('/error')
+            });
+        } else {
+          alert("Only the course owner may delete this course");
+        }
+
+   }
+  
 }
