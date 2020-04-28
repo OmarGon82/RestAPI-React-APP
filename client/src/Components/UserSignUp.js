@@ -103,7 +103,7 @@ export default class UserSignUp extends Component {
             console.log(`${emailAddress} is successfully signed up and authenticated!`);
             context.actions.signIn(emailAddress, password)
               .then( () => {
-                this.props.history.push('/authenticated')
+                this.props.history.push('/')
               })
           }
         })
