@@ -10,15 +10,19 @@ export default class Courses extends Component {
     }
   }
    async componentDidMount() {
-    const { context } = this.props;
-    const courses = await context.data.getCourses();
-    if (courses !== null) {
-        this.setState(() => {  
-            return {
-               courses,
-               isLoaded: true,
-            };
-        });
+    try {
+        const { context } = this.props;
+        const courses = await context.data.getCourses();
+        if (courses !== null) {
+            this.setState(() => {  
+                return {
+                   courses,
+                   isLoaded: true,
+                };
+            });
+        } 
+    } catch (error) {
+        this.props.history.push('/error')
     }
   }
     render() {

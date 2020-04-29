@@ -83,7 +83,7 @@ const auth = require('basic-auth');
      */
     router.get('/users', authenticateUser, handleAsync(async (req, res) => {
         const user = req.currentUser;
-  
+    
         res.json({
             id: user.id,
             firstName: user.firstName,
@@ -176,7 +176,7 @@ const courses = await Course.findAll({
 
     ]
 });
-res.json(courses.map(course=> course.get({ plain: true })));
+res.json(courses.map(course => course.get({ plain: true })));
 }));
 
 /**

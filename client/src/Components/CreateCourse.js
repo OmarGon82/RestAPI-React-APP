@@ -111,7 +111,6 @@ export default class CreateCourse extends Component {
   submit = () => {
     const { context } = this.props;
     const authUser = context.authenticatedUser;
-    // console.log("auth user in create course", authUser)
     const {
     title,
     description,
@@ -128,8 +127,6 @@ export default class CreateCourse extends Component {
     };
     const emailAddress = authUser.emailAddress
     const password = authUser.password
-    // console.log(emailAddress)
-    // console.log(authUser)
     context.data.createCourse(course, emailAddress, password)
       .then(errors => {
         console.log(errors)

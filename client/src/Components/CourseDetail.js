@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 // set Markdown 
 const ReactMarkdown = require('react-markdown');
 
-
 export default class CourseDetail extends Component {
     constructor() {
         super();
@@ -15,6 +14,7 @@ export default class CourseDetail extends Component {
     }
 
     async componentDidMount() {
+      try {
         const { context } = this.props;
         const course = await context.data.getSingleCourse(this.props.match.params.id);
         if (course !== null) {
@@ -23,15 +23,22 @@ export default class CourseDetail extends Component {
                     course,
                 }
             })
-        }
+        } else if (!course) {
+           this.props.history.push('/notfound')
+        } 
+ 
+      } catch (error) {
+        this.props.history.push('/error')
+      }
     }
 
   render() {
     const { course } = this.state;
+    const { context } = this.props;
+    const authUser = context.authenticatedUser;
     /**
      * Get nested object by checks if the course exists. If it does it creates it creates an empty object.
      * This allows the next level key to be accessed from object that exists or an empty one. 
-     * source: https://hackernoon.com/accessing-nested-objects-in-javascript-f02f1bd6387f
      */
     const firstName = ((course|| {}).user || {}).firstName;
     const lastName = ((course|| {}).user || {}).lastName;
@@ -40,8 +47,13 @@ export default class CourseDetail extends Component {
         <div className="actions--bar">
           <div className="bounds">
             <div className="grid-100">
-              <Link className="button" to={`/courses/${course.id}/update`}>Update Course</Link>
-              <Link className="button" onClick={this.deleteCourse}  to="/">Delete Course</Link>
+              {authUser &&
+                <React.Fragment>
+                  <Link className="button" to={`/courses/${course.id}/update`}>Update Course</Link>
+                  <Link className="button" onClick={this.deleteCourse}  to="/">Delete Course</Link>
+                </React.Fragment>
+              }
+
               <Link className="button button-secondary" to="/">Return to list</Link>
             </div>
           </div>
@@ -105,7 +117,7 @@ export default class CourseDetail extends Component {
               this.props.history.push('/error')
             });
         } else {
-          alert("Only the course owner may delete this course");
+            this.props.history.push('/forbidden')
         }
 
    }

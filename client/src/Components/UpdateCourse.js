@@ -23,8 +23,6 @@ async componentDidMount() {
     context.data.getSingleCourse(this.props.match.params.id)
      .then(course => {
        if (course) {
-        //  console.log(course)
-        //  console.log("this is the authUser id: ", authUser.id, "this is the course user id: ", course.user.id)
            if(course.user.id === authUser.id) {
              this.setState({
                id: course.id,
@@ -35,13 +33,13 @@ async componentDidMount() {
                userId: course.user.id
             });
           } else {
-            alert("You can't edit this course because you don't own it")
-            this.props.history.push(`/courses/${course.id}`)
+            this.props.history.push("/forbidden")
           }
         }
      })
      .catch(err => {
        console.log("this is the catch error: ",err)
+       this.props.history.push('/error')
      })
   }
 
