@@ -28,7 +28,13 @@ export default class Courses extends Component {
     render() {
         const { isLoaded, courses } = this.state;
         if(!isLoaded) {
-            return <div>Loading...</div>;
+            return  (
+                <div>
+                    {/* <img src="../../public/1_9EBHIOzhE1XfMYoKz1JcsQ.gif" alt="Loading icon" /> */}
+                </div>
+
+            )
+                
         } else {
             return (
                 <div className="bounds">

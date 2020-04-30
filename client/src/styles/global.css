@@ -207,13 +207,13 @@ body {
 
 /* line 13, ../sass/global.sass */
 .header {
-  background: #57496e;
+  background: #1C3144;
   padding: 20px 0;
   margin-bottom: 30px;
 }
 /* line 17, ../sass/global.sass */
 .header--logo {
-  color: #fff;
+  color: #C5C5C5;
   font-size: 24px;
   padding: 0 15px;
   margin: 0;
@@ -221,11 +221,11 @@ body {
 }
 /* line 23, ../sass/global.sass */
 .header--logo a {
-  color: rgba(255, 255, 255, 0.5);
+  color:rgba(255, 255, 255, 0.5)
 }
 /* line 25, ../sass/global.sass */
 .header--logo a:hover {
-  color: #fff;
+  color: #A8E0FF;
 }
 /* line 27, ../sass/global.sass */
 .header--logo .selected {
@@ -250,7 +250,7 @@ body {
 }
 /* line 40, ../sass/global.sass */
 .header nav a:hover {
-  color: #fff;
+  color:#A8E0FF;
 }
 
 /* line 44, ../sass/global.sass */
@@ -282,7 +282,7 @@ h1 {
 
 /* line 61, ../sass/global.sass */
 a {
-  color: #7c689b;
+  color: #2E5EAA;
   cursor: pointer;
   text-decoration: none;
   -webkit-transition: color 0.2s;
@@ -339,7 +339,7 @@ p {
 
 /* line 102, ../sass/global.sass */
 .course--module {
-  background: #7c689b;
+  background: #1A535C;
   border-radius: 8px;
   padding: 30px;
   margin-bottom: 30px;
@@ -678,7 +678,7 @@ input:focus {
 
 /* line 507, ../sass/global.sass */
 .button {
-  background: #7c689b;
+  background: #1C3144;
   color: #fff;
   font-family: "Work Sans", sans-serif;
   font-size: 18px;
@@ -701,14 +701,14 @@ input:focus {
 }
 /* line 522, ../sass/global.sass */
 .button:not(.button-secondary):hover {
-  background: #63537d;
+  background: #2E5EAA;
 }
 
 /* line 525, ../sass/global.sass */
 .button-secondary {
-  color: #7c689b;
+  color: #1C3144;
   background: none;
-  box-shadow: 0 0 0 2px #7c689b inset;
+  box-shadow: 0 0 0 2px #2E5EAA inset;
   -webkit-transition: box-shadow 0.2s, color 0.2s;
   -moz-transition: box-shadow 0.2s, color 0.2s;
   -ms-transition: box-shadow 0.2s, color 0.2s;
@@ -717,8 +717,8 @@ input:focus {
 }
 /* line 530, ../sass/global.sass */
 .button-secondary:hover {
-  color: #63537d;
-  box-shadow: 0 0 0 2px #63537d inset;
+  color: #2E5EAA;
+  box-shadow: 0 0 0 2px #2E5EAA inset;
 }
 
 /* adds additional padding to the bottom of an element */
@@ -739,11 +739,11 @@ input:focus {
 
 /* styles the validation errors */
 .validation--errors--label {
-  color: #7c689b;
+  color: #576CA8;
   font-size: 28px;
 }
 .validation-errors ul {
-  color: #7c689b;
+  color: #576CA8;
   padding: 15px 0 40px 10px;
 }
 
@@ -751,3 +751,23 @@ input:focus {
 .course--description textarea {
   margin-bottom: 20px;
 }
+
+/* Not found SVG*/
+.svg-style {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+  /* max-width: 40%; */
+}
+
+.warning-div {
+  text-align: center;
+}
+
+/* .page-warning {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+} */
