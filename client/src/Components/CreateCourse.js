@@ -133,16 +133,15 @@ export default class CreateCourse extends Component {
         if(errors.length) {
           this.setState({ errors });
         } else {
-          console.log(`The course: ${title} was successfully created`);
+          // console.log(`The course: ${title} was successfully created`);
           this.props.history.push('/')
         }
       })
     .catch( err => {
-      console.log("this is the create course catch error:", err)
+      // console.log("this is the create course catch error:", err)
       this.props.history.push('/error')
     })
   }
-
   cancel = () => {
     this.props.history.push('/')
   }

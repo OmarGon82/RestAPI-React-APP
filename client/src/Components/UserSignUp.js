@@ -112,7 +112,6 @@ export default class UserSignUp extends Component {
           this.props.history.push('./error'); // Push to history stack
         })
     }
-
     cancel = () => {
       this.props.history.push('/')
     }

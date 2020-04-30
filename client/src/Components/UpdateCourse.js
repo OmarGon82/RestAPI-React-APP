@@ -102,7 +102,7 @@ async componentDidMount() {
                         type="text" 
                         className="course--time--input"
                         placeholder="Hours" 
-                        value={estimatedTime || ''}
+                        value={estimatedTime || ''} // display the value of the course being edited or empty string
                         onChange={this.change}
                         />
                       </div>
@@ -114,7 +114,7 @@ async componentDidMount() {
                       id="materialsNeeded" 
                       name="materialsNeeded" 
                       placeholder="List materials... with an * separated by a space"
-                      value={materialsNeeded || ''}
+                      value={materialsNeeded || ''} // display the value of the course being edited or empty string
                       onChange={this.change} 
                       />
                       </div>
@@ -167,11 +167,11 @@ async componentDidMount() {
     
       context.data.updateCourse(course, emailAddress, password)
         .then(errors => {
-          console.log("these are the errors",errors)
+          console.log("these are the update course errors",errors)
           if(errors.length) {
             this.setState({ errors });
           } else {
-            console.log(`The course: ${title} was successfully updated`)
+            // console.log(`The course: ${title} was successfully updated`)
             this.props.history.push(`/courses/${this.props.match.params.id}`)
           }
         })

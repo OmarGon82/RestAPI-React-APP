@@ -1,4 +1,6 @@
 import React from 'react';
+
+// Import SVG as a component.
 import {ReactComponent as PageWarning} from '../svg/page_warning.svg';
 
 export default () => {

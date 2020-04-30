@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {ReactComponent as NotFoundSVG } from '../svg/notfound.svg';
+
+// Import SVG as a component.
+import { ReactComponent as NotFoundSVG } from '../svg/notfound.svg';
 
 export default () => (
 

@@ -26,7 +26,7 @@ export default class CourseDetail extends Component {
         } else if (!course) {
            this.props.history.push('/notfound')
         } 
- 
+
       } catch (error) {
         this.props.history.push('/error')
       }
@@ -88,11 +88,11 @@ export default class CourseDetail extends Component {
     )
   }
 
-  // Create a function that deletes the current course.
-  
    deleteCourse = (e) => {
-    e.preventDefault();
 
+    // Use prevent default so the page refreshes 
+    e.preventDefault();
+    
      const { context } = this.props;
      const authUser = context.authenticatedUser;
      const emailAddress = authUser.emailAddress;
@@ -101,7 +101,7 @@ export default class CourseDetail extends Component {
  
      const {
        course,
-     } = this.state;
+    } = this.state;
 
         if (course.user.id === userId) {
           context.data.deleteCourse(course, emailAddress, password)
@@ -119,7 +119,5 @@ export default class CourseDetail extends Component {
         } else {
             this.props.history.push('/forbidden')
         }
-
    }
-  
 }

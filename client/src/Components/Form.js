@@ -1,5 +1,9 @@
 import React from 'react';
 
+/**
+ *  Component to dynamically create Forms throughout the app.
+ */
+
 export default (props) => {
     const {
         cancel,

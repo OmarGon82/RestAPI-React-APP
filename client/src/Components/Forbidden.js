@@ -1,5 +1,7 @@
 import React from 'react';
-import {ReactComponent as UnautherizedSVG } from '../svg/unautherized.svg';
+
+// import svg as a component
+import {ReactComponent as UnauthorizedSVG } from '../svg/unauthorized.svg';
 
 export default () => (
 
@@ -8,7 +10,7 @@ export default () => (
     <p>It looks like you are trying to edit or delete a course that doesn't belong to you.
       Only the course owner may edit or delete this course.
     </p>
-    <UnautherizedSVG />
+    <UnauthorizedSVG />
     <a href='https://dryicons.com/free-icons/no-acccess-icons'> Icon by Dryicons </a>
   </div>
 )

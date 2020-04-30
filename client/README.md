@@ -66,3 +66,8 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+This app is a client that connects to an REST API I created. A teacher can log in and create courses and edit those courses. Teachers may not edit courses that they
+don't own. Students do not need to log and can view the course description, estimated time to complete the course as well as the materials needed for the course.
+The course matches the mark up (make up files included) but the color theme is different. I also added a loading indicator as well as custom pages for pages that are not found, unauthorized page and any other errors. 

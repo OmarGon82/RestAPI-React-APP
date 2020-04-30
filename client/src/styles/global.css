@@ -391,7 +391,7 @@ p {
 }
 /* line 137, ../sass/global.sass */
 .course--add--module:hover .course--add--title {
-  color: #444;
+  color: #0B5563;
 }
 /* line 139, ../sass/global.sass */
 .course--add--module:hover .add {
@@ -623,7 +623,7 @@ textarea:-ms-input-placeholder {
 }
 /* line 485, ../sass/global.sass */
 textarea:focus {
-  border-color: #7c689b;
+  border-color: #576CA8;
 }
 
 /* line 488, ../sass/global.sass */
@@ -656,7 +656,7 @@ input:-ms-input-placeholder {
 }
 /* line 500, ../sass/global.sass */
 input:focus {
-  border-color: #7c689b;
+  border-color: #576CA8;
 }
 
 /* line 29, ../sass/mixins.sass */
@@ -764,10 +764,3 @@ input:focus {
 .warning-div {
   text-align: center;
 }
-
-/* .page-warning {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 30%;
-} */

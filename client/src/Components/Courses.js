@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+// Import loading svg as a component
+import { ReactComponent as Spinner } from '../svg/Spinner-1s-200px.svg';
+
+
 export default class Courses extends Component {
   constructor() {
     super();
@@ -30,11 +34,10 @@ export default class Courses extends Component {
         if(!isLoaded) {
             return  (
                 <div>
-                    {/* <img src="../../public/1_9EBHIOzhE1XfMYoKz1JcsQ.gif" alt="Loading icon" /> */}
+                    <Spinner />
                 </div>
 
-            )
-                
+            )       
         } else {
             return (
                 <div className="bounds">
@@ -63,4 +66,3 @@ export default class Courses extends Component {
         }
     }
 }
-

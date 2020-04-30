@@ -5,9 +5,10 @@ import {
   Switch
 } from 'react-router-dom';
 
-
 import withContext from './Context'
 import PrivateRoute from './PrivateRoute';
+
+
 
 // Component Imports
 import Header from './Components/Header';
@@ -22,7 +23,7 @@ import UserSignOut from './Components/UserSignOut';
 import Forbidden from './Components/Forbidden';
 import UnhandledError from './Components/UnhandledError';
 
-//connect components to context
+// Connect components to context
 const HeaderWithContext = withContext(Header)
 const CoursesWithContext = withContext(Courses);
 const CourseDetailWithContext = withContext(CourseDetail);
@@ -34,6 +35,7 @@ const UserSignOutWithContext = withContext(UserSignOut);
 
 export default () => (
 
+  
     <Router>
       <div>
         <HeaderWithContext />
@@ -52,4 +54,8 @@ export default () => (
         </Switch>
       </div>
     </Router>
-);
+
+
+
+  
+)
