@@ -1,7 +1,7 @@
 import React from 'react';
 
 // import svg as a component
-import {ReactComponent as UnauthorizedSVG } from '../svg/unauthorized.svg';
+import {ReactComponent as UnauthorizedSVG } from '../svg/unauthorizedUser.svg';
 
 export default () => (
 
@@ -11,6 +11,6 @@ export default () => (
       Only the course owner may edit or delete this course.
     </p>
     <UnauthorizedSVG />
-    <a href='https://dryicons.com/free-icons/no-acccess-icons'> Icon by Dryicons </a>
+    <a href='https://dryicons.com/free-icons/unauthorized-user'> Icon by Dryicons </a>
   </div>
 )
