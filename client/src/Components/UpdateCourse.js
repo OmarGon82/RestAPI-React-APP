@@ -35,6 +35,8 @@ async componentDidMount() {
           } else {
             this.props.history.push("/forbidden")
           }
+        } else {
+          this.props.history.push("/notfound")
         }
      })
      .catch(err => {

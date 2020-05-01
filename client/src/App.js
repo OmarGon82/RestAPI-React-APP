@@ -23,6 +23,7 @@ import UserSignOut from './Components/UserSignOut';
 import Forbidden from './Components/Forbidden';
 import UnhandledError from './Components/UnhandledError';
 
+
 // Connect components to context
 const HeaderWithContext = withContext(Header)
 const CoursesWithContext = withContext(Courses);
@@ -50,6 +51,7 @@ export default () => (
           <Route path="/signup" component={UserSignUpWithContext} />
           <Route path="/signout" component={UserSignOutWithContext} />
           <Route path="/error" component={UnhandledError} />
+          <Route path="/notfound" component={NotFound} />
           <Route  component={NotFound} />
         </Switch>
       </div>

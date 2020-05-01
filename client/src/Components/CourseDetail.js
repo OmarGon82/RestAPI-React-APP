@@ -23,7 +23,7 @@ export default class CourseDetail extends Component {
                     course,
                 }
             })
-        } else if (!course) {
+        } else if (!course.id) {
            this.props.history.push('/notfound')
         } 
 
@@ -36,6 +36,9 @@ export default class CourseDetail extends Component {
     const { course } = this.state;
     const { context } = this.props;
     const authUser = context.authenticatedUser;
+    const courseUserId = ((course || {}).user || {}).id
+    console.log("this is the auth user id: ", authUser.id)
+    console.log("this is the course id: ", courseUserId)
     /**
      * Get nested object by checks if the course exists. If it does it creates it creates an empty object.
      * This allows the next level key to be accessed from object that exists or an empty one. 
@@ -47,7 +50,7 @@ export default class CourseDetail extends Component {
         <div className="actions--bar">
           <div className="bounds">
             <div className="grid-100">
-              {authUser &&
+              {authUser.id === courseUserId &&
                 <React.Fragment>
                   <Link className="button" to={`/courses/${course.id}/update`}>Update Course</Link>
                   <Link className="button" onClick={this.deleteCourse}  to="/">Delete Course</Link>
