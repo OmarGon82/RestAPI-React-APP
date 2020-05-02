@@ -85,6 +85,11 @@ export default class Data  {
             return response.json().then(data => data)
         }
         else if (response.status === 404) {
+            // return response.json().then(data => {
+            //     console.log("get a course data error: ", data.errors)
+            //     return data.errors;
+            // })
+            console.log("get single course 400 error")
             return null;
         }
         else {
