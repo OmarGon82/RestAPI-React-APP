@@ -41,7 +41,6 @@ export default class CourseDetail extends Component {
      * Get nested object by checks if the course exists. If it does it creates it creates an empty object.
      * This allows the next level key to be accessed from object that exists or an empty one. 
      */
-    // console.log(courseUserId)
     const firstName = ((course|| {}).user || {}).firstName;
     const lastName = ((course|| {}).user || {}).lastName;
     return (
@@ -49,15 +48,12 @@ export default class CourseDetail extends Component {
         <div className="actions--bar">
           <div className="bounds">
             <div className="grid-100">
-              { authUser && authUser.id === courseUserId ?
+              {( authUser && authUser.id === courseUserId) &&
                 <React.Fragment>
                   <Link className="button" to={`/courses/${course.id}/update`}>Update Course</Link>
                   <Link className="button" onClick={this.deleteCourse}  to="/">Delete Course</Link>
                 </React.Fragment>
-                :
-                null
               }
-
               <Link className="button button-secondary" to="/">Return to list</Link>
             </div>
           </div>
