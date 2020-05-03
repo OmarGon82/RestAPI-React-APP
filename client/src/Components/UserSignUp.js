@@ -8,6 +8,7 @@ export default class UserSignUp extends Component {
         lastName: '',
         emailAddress: '',
         password: '',
+        confirmPassword: '',
         errors: [],
     }
 
@@ -17,6 +18,7 @@ export default class UserSignUp extends Component {
             lastName,
             emailAddress,
             password,
+            confirmPassword,
             errors,
         } = this.state;
 
@@ -59,6 +61,13 @@ export default class UserSignUp extends Component {
                                 value={password}
                                 onChange={this.change}
                                 placeholder="Password" />
+                            <input 
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                type="password"
+                                value={confirmPassword}
+                                onChange={this.change}
+                                placeholder="Confirm Password" />
                         </React.Fragment>
                     )} />
                     <p>
@@ -80,13 +89,16 @@ export default class UserSignUp extends Component {
         });
     }
     
-    submit = () => {
+  submit = () => {
+      
       const { context } = this.props;
+
       const {
         firstName,
         lastName,
         emailAddress,
-        password
+        password,
+        confirmPassword
       } = this.state;
       const user = {
         firstName,
@@ -94,23 +106,30 @@ export default class UserSignUp extends Component {
         emailAddress,
         password
       };
-      
-      context.data.createUser(user)
-        .then( errors => {
-          if(errors.length) {
-            this.setState({ errors });
-          } else {
-            console.log(`${emailAddress} is successfully signed up and authenticated!`);
-            context.actions.signIn(emailAddress, password)
-              .then( () => {
-                this.props.history.push('/')
-              })
-          }
-        })
-        .catch( err => { // handle rejected promises
-          console.log(err)
-          this.props.history.push('./error'); // Push to history stack
-        })
+      if(password !== confirmPassword) {
+        this.setState({
+          errors: ['Your passwords do not match. Please try again.']
+        });
+      } else {
+        
+        context.data.createUser(user)
+          .then( errors => {
+            if(errors.length) {
+              this.setState({ errors });
+            }
+            else {
+              console.log(`${emailAddress} is successfully signed up and authenticated!`);
+              context.actions.signIn(emailAddress, password)
+                .then( () => {
+                  this.props.history.push('/')
+                })
+            }
+          })
+          .catch( err => { // handle rejected promises
+            console.log(err)
+            this.props.history.push('./error'); // Push to history stack
+          })
+      }
     }
     cancel = () => {
       this.props.history.push('/')

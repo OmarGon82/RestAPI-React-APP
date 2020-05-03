@@ -48,7 +48,7 @@ export default class CourseDetail extends Component {
         <div className="actions--bar">
           <div className="bounds">
             <div className="grid-100">
-              {( authUser && authUser.id === courseUserId) &&
+              {(authUser && authUser.id === courseUserId) &&
                 <React.Fragment>
                   <Link className="button" to={`/courses/${course.id}/update`}>Update Course</Link>
                   <Link className="button" onClick={this.deleteCourse}  to="/">Delete Course</Link>
