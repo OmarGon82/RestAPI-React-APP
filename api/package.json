@@ -23,7 +23,7 @@
     "express-validator": "^6.10.0",
     "morgan": "^1.10.0",
     "promise.prototype.finally": "^3.1.2",
-    "sequelize": "^6.6.2",
+    "sequelize": "^6.28.2",
     "sequelize-cli": "^6.2.0",
     "sqlite3": "^5.0.2"
   }
